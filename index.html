@@ -1,1 +1,331 @@
-test
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="description" content="청첩장이 아직 개발 중입니다. 2027년 3월 28일, 우리의 특별한 날을 기다려 주세요.">
+    <title>Wedding Invitation · Coming Soon</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --paper: #faf8f3;
+            --ink: #37332d;
+            --muted: #82796d;
+            --gold: #a58b65;
+            --line: #ded5c7;
+            --panel: #f1ece3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            margin: 0;
+        }
+
+        body {
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 28px 20px;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "Noto Serif KR", "Batang", "AppleMyungjo", serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .page {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: min(100%, 390px);
+            padding: clamp(34px, 8vh, 66px) 24px;
+            text-align: center;
+        }
+
+        .page::before {
+            position: absolute;
+            inset: 12px 0;
+            border: 1px solid var(--line);
+            content: "";
+            pointer-events: none;
+        }
+
+        .page::after {
+            position: absolute;
+            inset: 18px 6px;
+            border: 1px solid rgb(222 213 199 / 48%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .eyebrow {
+            margin: 0 0 17px;
+            color: var(--gold);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .tool-icon {
+            width: 34px;
+            height: 34px;
+            margin-bottom: 17px;
+            color: var(--gold);
+        }
+
+        h1 {
+            margin: 0;
+            color: #3d382f;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(32px, 9vw, 42px);
+            font-weight: 400;
+            letter-spacing: -.045em;
+            line-height: 1.1;
+        }
+
+        .description {
+            margin: 15px 0 0;
+            color: var(--muted);
+            font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: -.035em;
+            line-height: 1.8;
+        }
+
+        .ornament {
+            width: 42px;
+            height: 1px;
+            margin: 34px 0 30px;
+            background: var(--gold);
+            opacity: .7;
+        }
+
+        .date-label {
+            margin: 0 0 12px;
+            color: var(--gold);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 10px;
+            letter-spacing: .22em;
+        }
+
+        .date {
+            margin: 0;
+            color: #494137;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(27px, 7.5vw, 34px);
+            font-weight: 400;
+            letter-spacing: .035em;
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+
+        .date-detail {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+            font-size: 13px;
+            letter-spacing: -.025em;
+        }
+
+        .countdown {
+            width: min(100%, 270px);
+            margin-top: 31px;
+            padding: 19px 16px 17px;
+            background: var(--panel);
+        }
+
+        .countdown-label {
+            margin: 0 0 9px;
+            color: #907b5d;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 9px;
+            letter-spacing: .2em;
+        }
+
+        .countdown-value {
+            margin: 0;
+            color: #514536;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 39px;
+            font-weight: 400;
+            letter-spacing: -.025em;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-note {
+            margin: 8px 0 0;
+            color: #8b8175;
+            font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+            font-size: 11px;
+            letter-spacing: -.02em;
+        }
+
+        .footer {
+            margin: 31px 0 0;
+            color: #aa9b86;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 9px;
+            letter-spacing: .24em;
+        }
+
+        @media (max-width: 360px) {
+            .page {
+                padding-right: 18px;
+                padding-left: 18px;
+            }
+
+            .description,
+            .date-detail {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-height: 620px) {
+            body {
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+
+            .page {
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+
+            .ornament {
+                margin-top: 22px;
+                margin-bottom: 21px;
+            }
+
+            .countdown {
+                margin-top: 22px;
+            }
+
+            .footer {
+                margin-top: 21px;
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .content {
+                animation: appear .8s ease-out both;
+            }
+
+            @keyframes appear {
+                from {
+                    opacity: 0;
+                    transform: translateY(7px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <div class="content">
+            <p class="eyebrow">Wedding Invitation</p>
+
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M14.2 6.1a5.1 5.1 0 0 0-6.5 6.5L3.4 16.9a2.05 2.05 0 1 0 2.9 2.9l4.3-4.3a5.1 5.1 0 0 0 6.5-6.5l-3 3-3.2-3.2 3.3-2.7Z"
+                      stroke="currentColor" stroke-width="1.15"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m16.4 4.7 2.9 2.9" stroke="currentColor"
+                      stroke-width="1.15" stroke-linecap="round"/>
+            </svg>
+
+            <h1>Coming soon</h1>
+            <p class="description">청첩장이 아직 개발 중입니다</p>
+
+            <div class="ornament" aria-hidden="true"></div>
+
+            <p class="date-label">OUR SPECIAL DAY</p>
+            <p class="date">2027.03.28</p>
+            <p class="date-detail">일요일 오전 11시</p>
+
+            <section class="countdown" aria-label="결혼식까지 남은 날짜">
+                <p class="countdown-label">D-DAY COUNTDOWN</p>
+                <p class="countdown-value" id="countdown" aria-live="polite">D-</p>
+                <p class="countdown-note" id="countdown-note">소중한 날을 기다리고 있습니다</p>
+            </section>
+
+            <p class="footer">WITH LOVE · 2027</p>
+        </div>
+    </main>
+
+    <script>
+        (() => {
+            const targetDate = { year: 2027, month: 3, day: 28 };
+            const countdown = document.getElementById("countdown");
+            const note = document.getElementById("countdown-note");
+
+            function getKoreaDateParts(date) {
+                const parts = new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "Asia/Seoul",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit"
+                }).formatToParts(date);
+
+                return Object.fromEntries(
+                    parts
+                        .filter(part => part.type !== "literal")
+                        .map(part => [part.type, Number(part.value)])
+                );
+            }
+
+            function updateCountdown() {
+                const today = getKoreaDateParts(new Date());
+
+                const todayUtc = Date.UTC(today.year, today.month - 1, today.day);
+                const targetUtc = Date.UTC(
+                    targetDate.year,
+                    targetDate.month - 1,
+                    targetDate.day
+                );
+
+                const days = Math.round((targetUtc - todayUtc) / 86400000);
+
+                if (days > 0) {
+                    countdown.textContent = `D-${days}`;
+                    note.textContent = "소중한 날을 기다리고 있습니다";
+                } else if (days === 0) {
+                    countdown.textContent = "D-DAY";
+                    note.textContent = "오늘, 저희의 특별한 날입니다";
+                } else {
+                    countdown.textContent = `D+${Math.abs(days)}`;
+                    note.textContent = "함께해 주셔서 감사합니다";
+                }
+            }
+
+            updateCountdown();
+
+            // 자정이 지나 날짜가 바뀌면 카운트다운을 갱신합니다.
+            window.setInterval(updateCountdown, 60 * 1000);
+        })();
+    </script>
+</body>
+</html>
